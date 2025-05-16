@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Checklist Diário - Operador de Empilhadeira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-image: url('https://media.istockphoto.com/id/1857550076/pt/foto/smiling-forklift-operator-working-in-a-large-shipping-warehouse.jpg?s=612x612&w=0&k=20&c=hIK8iFSDj9Iyu72BVp9Tr6av9yzik-MF31sj4TE2QTU='); /* fundo */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-top: 40px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .introducao {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.introducao h2 {
+  margin-top: 0;
+  color: #202124;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.introducao p {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+    form {
+      background: rgba(255, 255, 255, 0.85); /* leve transparência */
+      padding: 30px 40px;
+      max-width: 750px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .pergunta {
+  background: rgba(248, 249, 250, 0.6); /* mais transparente */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 6px solid #4285f4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* sombra leve */
+}
+
+    .pergunta label {
+      display: block;
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #202124;
+    }
+
+    .resposta {
+      margin-left: 10px;
+    }
+
+    .resposta input[type="radio"] {
+      margin-right: 6px;
+      transform: scale(1.2);
+      accent-color: #4285f4;
+    }
+
+    .empilhadeira-img img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #1a73e8;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #155ab6;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 12px 0;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+  </style>
+</head>
+<body>
+
+  <h1>Checklist Diário - Operador de Empilhadeira</h1>
+
+  <div class="introducao">
+  <h2>Importância do Checklist Diário</h2>
+  <p>
+    A realização do checklist diário de empilhadeiras é essencial para garantir a segurança do operador e de todos ao redor. Este procedimento simples pode prevenir falhas mecânicas, reduzir riscos de acidentes graves e assegurar que o equipamento esteja em plenas condições de operação.
+  </p>
+  <p>
+    Empilhadeiras operando com problemas podem causar tombamentos, colisões, quedas de carga ou atropelamentos. Por isso, cada item listado aqui deve ser verificado com atenção antes do início das atividades.
+  </p>
+  <p>
+    O objetivo deste checklist é identificar falhas ou anomalias preventivamente, permitindo ações corretivas antes que se tornem riscos reais. A segurança começa com a responsabilidade na inspeção diária!
+  </p>
+</div>
+
+  <form id="checklistForm">
+    
+    <!-- Pergunta 1: Tipo da empilhadeira -->
+    <div class="pergunta">
+      <label>1 – Qual o tipo da empilhadeira abaixo?</label>
+      <div class="empilhadeira-img">
+        <img src="data:image/jpeg;base64,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" max-width="120" >
+      </div>
+      <div class="resposta">
+        <input type="radio" name="q1" value="elétrica">Elétrica<br>
+        <input type="radio" name="q1" value="patolada">Patolada<br>
+        <input type="radio" name="q1" value="trilateral">Trilateral
+      </div>
+    </div>
+
+    <!-- Perguntas 2 a 16 -->
+    <script>
+      const perguntas = [
+        "2 – Equipamento está ligando?",
+        "3 – Pneus estão íntegros e sem danos?",
+        "4 – Alerta sonoro está funcionando?",
+        "5 – Luzes de sinalização estão operando?",
+        "6 – Freios estão funcionando corretamente?",
+        "7 – Nível de óleo está adequado?",
+        "8 – Buzina e sinais sonoros funcionam?",
+        "9 – Estrutura e garfos sem danos?",
+        "10 – Vazamentos visíveis de fluidos?",
+        "11 – Extintor está disponível e carregado?",
+        "12 – Painel e indicadores estão funcionando?",
+        "13 – Cinto de segurança está funcionando?",
+        "14 – Direção está leve e responsiva?",
+        "15 – Alavancas de controle operam normalmente?",
+        "16 – Área de operação está segura e livre de obstáculos?"
+      ];
+      window.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('checklistForm');
+        perguntas.forEach((texto, i) => {
+          const bloco = document.createElement('div');
+          bloco.className = 'pergunta';
+          bloco.innerHTML = `
+            <label>${texto}</label>
+            <div class="resposta">
+              <input type="radio" name="q${i + 2}" value="sim">Sim
+              <input type="radio" name="q${i + 2}" value="nao">Não
+            </div>`;
+          form.insertBefore(bloco, document.querySelector("button"));
+        });
+      });
+    </script>
+
+    <button type="button" onclick="verificarChecklist()">Enviar Checklist</button>
+    <div id="resultado"></div>
+  </form>
+
+  <footer>
+    Desenvolvido por Igor - Todos os direitos reservados
+  </footer>
+
+  <script>
+    function verificarChecklist() {
+      const total = 16;
+      let respondidas = 0;
+      let negativas = 0;
+
+      for (let i = 1; i <= total; i++) {
+        let respostas = document.getElementsByName("q" + i);
+        for (let r of respostas) {
+          if (r.checked) {
+            respondidas++;
+            if (r.value === "nao") {
+              negativas++;
+            }
+          }
+        }
+      }
+
+      const resultado = document.getElementById('resultado');
+      if (respondidas < total) {
+        resultado.textContent = "⚠️ Por favor, responda todas as perguntas.";
+        resultado.style.color = "#d93025";
+      } else if (negativas > 0) {
+        resultado.textContent = `❌ Existem ${negativas} item(ns) com problema. Equipamento NÃO liberado.`;
+        resultado.style.color = "#d93025";
+      } else {
+        resultado.textContent = "✅ Checklist completo e aprovado. Equipamento pronto para uso.";
+        resultado.style.color = "#188038";
+      }
+    }
+  </script>
+
+</body>
+</html>
